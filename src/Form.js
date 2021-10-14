@@ -77,9 +77,12 @@ class Form extends Component {
         e.preventDefault();    
     
         if (this.handleFormValidation()) {   
-            axios.post('/user', {
-                name: this.state.studName,
-                class: this.state.standard,
+            axios.post('/', {
+                studentName: this.state.studName,
+                standard: this.state.standard,
+                dob: this.state.dob,
+                division: this.state.division,
+                gender: this.state.gender  
               })
               .then(function (response) {
                 console.log(response);
@@ -164,11 +167,13 @@ class Form extends Component {
                             }    
                         </div>    
                         <div>    
-                            <label htmlFor="gender">Gender</label>    
+                            <label htmlFor="gender">Gender</label>  
+                              
                            
                             <input type="radio" value="Male" name="gender" onChange={this.handleChange} /> Male  
                             <input type="radio" value="Female" name="gender" onChange={this.handleChange} /> Female 
-                            <input type="radio" value="Other" name="gender"  onChange={this.handleChange} /> Other   
+                            <input type="radio" value="Other" name="gender"  onChange={this.handleChange} /> Other  
+                             
                             {genderErr &&    
                                 <div style={{ color: "red", paddingBottom: 10 }}>{genderErr}</div>    
                             }    
